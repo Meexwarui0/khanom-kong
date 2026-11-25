@@ -1,0 +1,262 @@
+:root{
+  --y:#FFD45E;--y2:#FFF0B8;--p:#F59BBB;--p2:#FFDDE8;
+  --w:#FFFDF7;--ink:#6E3249;--gold:#C98F1E;--g:#5FB85B;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font-family:'Sarabun','Mitr',sans-serif;color:var(--ink);background:var(--w);overflow:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 6l8 24-8 24-8-24z' fill='none' stroke='%23F5C95A' stroke-opacity='.32' stroke-width='1.5'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%23F59BBB' fill-opacity='.22'/%3E%3C/svg%3E");
+}
+h1,h2,.btn,.brand,.kicker,#stepName{font-family:'Mitr','Sarabun',sans-serif}
+
+/* Header */
+.bar{
+  position:fixed;inset:0 0 auto;height:54px;z-index:20;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 18px;background:linear-gradient(var(--w) 65%,#fffdf700);
+}
+.brand{color:var(--gold);font-size:1.1rem;font-weight:600}
+.tools{display:flex;gap:8px;align-items:center}
+.pill,.lang button{
+  border:2px solid var(--y);background:var(--w);color:var(--ink);
+  border-radius:99px;padding:4px 12px;font:600 .85rem Sarabun;cursor:pointer;
+}
+.lang{display:flex;gap:4px}.lang .on{background:var(--p);border-color:var(--p);color:#fff}
+
+/* Page Container */
+#book{position:relative;height:100%}
+.page{
+  position:absolute;inset:0;
+  padding:58px 20px 76px;
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  overflow-y:auto;
+}
+.page.on{display:flex;animation:in .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateX(24px)}}
+.page::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 100% 0,var(--p2) 0 18%,transparent 19%),
+             radial-gradient(circle at 0 100%,var(--y2) 0 22%,transparent 23%);
+}
+.page-head{text-align:center;margin-bottom:14px}
+h2{font-size:clamp(1.55rem,4.5vw,2.15rem);color:var(--gold);font-weight:600;line-height:1.2}
+.sub{max-width:520px;margin:6px auto 0;opacity:.88;font-size:.98rem;line-height:1.45}
+
+/* Page 1: Hero */
+.hero{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:10px;max-width:540px;width:100%;margin:auto 0;
+}
+.kong-big{
+  width:clamp(160px, 34vh, 230px);
+  height:clamp(160px, 34vh, 230px);
+  display:grid;place-items:center;
+  animation:floatHero 3.4s ease-in-out infinite;
+  filter:drop-shadow(0 14px 16px rgba(180,120,25,.25));
+}
+.kong-big svg{width:100%;height:100%}
+@keyframes floatHero{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+.kicker{
+  background:var(--p);color:#fff;padding:5px 18px;border-radius:99px;
+  font-size:.9rem;font-weight:500;letter-spacing:.3px;box-shadow:0 3px 0 #d4668f;
+}
+h1{
+  font-size:clamp(2.4rem,9vw,4.2rem);line-height:1.05;
+  color:var(--gold);font-weight:600;text-shadow:3px 3px 0 var(--y2);
+  margin:2px 0;
+}
+h1 span{color:var(--p);text-shadow:3px 3px 0 var(--y2)}
+.lead{max-width:440px;line-height:1.55;font-size:.98rem;margin-bottom:6px}
+
+/* Buttons */
+.btn{
+  border:0;cursor:pointer;background:var(--p);color:#fff;border-radius:99px;
+  padding:12px 30px;font-size:1.05rem;font-weight:500;
+  box-shadow:0 5px 0 #d4668f;transition:transform .12s,box-shadow .12s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #d4668f}
+.btn.alt{background:var(--y);color:var(--ink);box-shadow:0 5px 0 #d9a92b}
+.btn.alt:active{box-shadow:0 1px 0 #d9a92b}
+.btn.ghost{background:var(--w);color:var(--ink);border:2px solid var(--p);box-shadow:none}
+.btn.go{animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* Page 2: Ingredients */
+.ings{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;width:min(100%,760px)}
+.ing{
+  background:var(--w);border:2.5px solid var(--y);border-radius:26px 26px 26px 10px;
+  padding:14px 10px;text-align:center;box-shadow:0 6px 0 var(--y2);transition:transform .2s;
+}
+.ing:hover{transform:rotate(-2deg) translateY(-4px)}
+.ing svg{width:70px;height:70px;display:block;margin:0 auto}
+.ing b{display:block;font:500 1rem Mitr;margin-top:6px}.ing small{opacity:.82;font-size:.82rem;line-height:1.3;display:block;margin-top:2px}
+
+/* Page 3: Chef Intro */
+.teach{
+  margin:auto;display:flex;align-items:center;gap:22px;
+  flex-wrap:wrap;justify-content:center;max-width:740px;width:100%;
+}
+.chef{width:min(46vw,210px);height:min(56vw,260px);flex:none;display:grid;place-items:center}
+.chef.small{width:76px;height:94px;flex:none}
+.chef svg{width:100%;height:100%;overflow:visible}
+.arm{transform-origin:132px 134px;animation:wave 1.5s ease-in-out infinite}
+@keyframes wave{50%{transform:rotate(-14deg)}}
+.chef .head{animation:nod 2.4s ease-in-out infinite;transform-origin:100px 115px}
+@keyframes nod{50%{transform:rotate(2.5deg)}}
+.eye{animation:blink 4s infinite;transform-origin:center;transform-box:fill-box}
+@keyframes blink{95%,100%{transform:scaleY(.12)}}
+
+/* Smooth Rounded Speech Bubble */
+.bubble{
+  position:relative;background:#fff;border:3px solid var(--p);border-radius:30px;
+  padding:24px 28px;max-width:390px;box-shadow:0 8px 0 var(--p2);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.bubble .tail{
+  position:absolute;left:-21px;top:38%;transform:translateY(-50%);
+  width:24px;height:32px;pointer-events:none;
+}
+.bubble-desc{line-height:1.55;font-size:1rem;color:var(--ink)}
+.bubble.sm{
+  flex:1;padding:12px 18px;font-weight:600;max-width:none;text-align:left;
+  align-items:flex-start;gap:0;border-radius:24px;box-shadow:0 5px 0 var(--p2);
+  animation:pop .3s;font-size:.96rem;line-height:1.4;
+}
+.bubble.sm .tail.sm{
+  position:absolute;left:-17px;top:50%;transform:translateY(-50%);
+  width:20px;height:26px;
+}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+
+/* Page 4: Game */
+#p4{justify-content:space-between;padding-top:58px;padding-bottom:74px}
+.gamehead{width:min(100%,640px);display:flex;align-items:center;gap:14px;justify-content:space-between}
+#stepName{color:var(--gold);font-weight:600;font-size:1rem;white-space:nowrap}
+.prog{flex:1;height:14px;background:var(--y2);border-radius:99px;overflow:hidden;border:2px solid #f2cf6b}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--y),var(--p));transition:width .4s}
+.gamewrap{display:flex;align-items:center;gap:16px;width:min(100%,640px);margin:6px 0}
+.stage{
+  position:relative;width:min(100%,640px);flex:1;min-height:245px;max-height:365px;
+  border-radius:32px;border:4px solid var(--y);box-shadow:0 8px 0 var(--y2);
+  overflow:hidden;touch-action:none;background:#FCEFD2;
+}
+.stage svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.tray{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px;min-height:82px}
+.tbtn{
+  min-width:82px;border:2.5px solid var(--y);background:var(--w);border-radius:22px;
+  padding:6px 8px;cursor:pointer;font:500 .78rem Mitr;color:var(--ink);
+  box-shadow:0 5px 0 var(--y2);transition:transform .12s,box-shadow .12s;
+}
+.tbtn:hover{transform:translateY(-3px)}
+.tbtn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--y2)}
+.tbtn.used{opacity:.35;pointer-events:none;filter:grayscale(.6)}
+.tbtn.highlight{border-color:var(--p);background:#FFF6F9;box-shadow:0 5px 0 var(--p2);animation:pulseBtn 1.2s infinite}
+@keyframes pulseBtn{50%{transform:translateY(-3px) scale(1.04)}}
+.tbtn svg{width:44px;height:44px;display:block;margin:0 auto 2px}
+
+.fly{position:absolute;width:54px;height:54px;pointer-events:none;animation:drop .75s cubic-bezier(.3,.7,.4,1.2) forwards}
+@keyframes drop{0%{transform:translate(var(--x),-60px) scale(1.25) rotate(-20deg);opacity:1}70%{transform:translate(var(--x),var(--y)) rotate(10deg)}100%{transform:translate(var(--x),var(--y)) scale(.4);opacity:0}}
+.splash{position:absolute;pointer-events:none;color:var(--gold);text-shadow:0 2px 0 #fff;font:600 1.35rem Mitr;animation:up .95s forwards}
+@keyframes up{to{transform:translateY(-60px) scale(1.15);opacity:0}}
+.spoon{transform-origin:0 0}
+.strand{stroke-dasharray:420;stroke-dashoffset:420;animation:draw .65s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hit{fill:#F59BBB77;stroke:var(--p);stroke-width:3.5;stroke-dasharray:6 5;cursor:pointer;animation:pulse 1s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.22)}}
+.bubbleoil circle{animation:bub 1.1s infinite ease-out}
+@keyframes bub{0%{transform:translateY(0) scale(.8);opacity:1}100%{transform:translateY(-34px) scale(1.2);opacity:0}}
+.bob-fry{animation:bobFry 1.4s ease-in-out infinite}
+@keyframes bobFry{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+/* Fixed In-Place Flip Animation (Never flies off screen!) */
+.flip-inner{
+  transform-box:fill-box;
+  transform-origin:center center;
+}
+.flip-inner.do-flip{
+  animation:tossInPlace .68s cubic-bezier(.22,.9,.34,1.15) forwards;
+}
+@keyframes tossInPlace{
+  0%{transform:translateY(0) scaleY(1) rotate(0deg)}
+  40%{transform:translateY(-78px) scaleY(-1) rotate(12deg)}
+  75%{transform:translateY(6px) scaleY(1.08) rotate(-3deg)}
+  100%{transform:translateY(0) scaleY(1) rotate(0deg)}
+}
+
+/* Cute Stove Heat Gauge */
+.meter{
+  position:absolute;left:22%;right:22%;bottom:12px;height:24px;
+  background:#4A3B40;border:3px solid #E86A68;border-radius:99px;
+  overflow:hidden;box-shadow:0 4px 0 #B34240;
+}
+.meter .zone{position:absolute;top:0;bottom:0;left:52%;width:24%;background:#66C964;border-radius:4px}
+.meter .needle{position:absolute;top:-2px;width:8px;height:24px;background:#FFF;border:2px solid #4A3B40;border-radius:99px}
+
+/* Page 5: End */
+.endwrap{display:flex;flex-direction:column;align-items:center;gap:14px;width:min(100%,520px)}
+.polaroid{
+  background:linear-gradient(180deg,#FFFDF9 0%,#FFF5E1 100%);
+  padding:14px 14px 36px;border-radius:22px;box-shadow:0 12px 28px #c98f1e44;
+  transform:rotate(-1.5deg);width:min(76vw,320px);aspect-ratio:1;
+  display:grid;place-items:center;border:3px solid var(--y);position:relative;overflow:hidden;
+}
+.polaroid::after{content:"Khanom Kong • ขนมกง";position:absolute;bottom:9px;left:0;right:0;text-align:center;font:500 .85rem Mitr;color:var(--gold);opacity:.9}
+.polaroid img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.polaroid svg{width:96%;height:96%}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+#story{width:min(60vw,220px);height:auto;border-radius:16px;box-shadow:0 8px 20px #0002;display:none}
+
+/* Camera Modal */
+.cam-modal{position:fixed;inset:0;z-index:50;background:rgba(46,34,38,.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
+.cam-modal.on{display:flex;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}}
+.cam-box{width:min(100%,420px);background:#1f191b;border-radius:28px;border:3px solid var(--y);overflow:hidden;box-shadow:0 20px 50px #0008;display:flex;flex-direction:column}
+.cam-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;color:#fff;font:500 .9rem Mitr;background:#2a2124}
+.cam-badge{color:#ff5e7e;font-size:.8rem;letter-spacing:1px}
+.cam-close{background:none;border:0;color:#fff;font-size:1.3rem;cursor:pointer;padding:2px 6px}
+.cam-view{position:relative;width:100%;aspect-ratio:1;background:#111;overflow:hidden}
+.cam-view video{width:100%;height:100%;object-fit:cover}
+.cam-grid{position:absolute;inset:0;pointer-events:none;border:1px solid #fff3}
+.cam-grid i{position:absolute;background:#fff3}
+.cam-grid i:nth-child(1){left:33.3%;top:0;bottom:0;width:1px}
+.cam-grid i:nth-child(2){left:66.6%;top:0;bottom:0;width:1px}
+.cam-grid i:nth-child(3){top:33.3%;left:0;right:0;height:1px}
+.cam-grid i:nth-child(4){top:66.6%;left:0;right:0;height:1px}
+.cam-focus{position:absolute;inset:18%;border:2px dashed var(--y);border-radius:24px;pointer-events:none;opacity:.75}
+.cam-controls{display:flex;align-items:center;justify-content:space-around;padding:18px;background:#2a2124}
+.shutter{width:68px;height:68px;border-radius:50%;background:#fff;border:5px solid var(--p);cursor:pointer;box-shadow:0 0 0 4px #fff3;transition:transform .1s}
+.shutter:active{transform:scale(.9)}
+.cam-flip,.cam-gallery{width:46px;height:46px;border-radius:50%;background:#ffffff1a;border:0;color:#fff;font-size:1.3rem;display:grid;place-items:center;cursor:pointer}
+.cam-flash{position:absolute;inset:0;background:#fff;pointer-events:none;animation:flash .35s ease-out forwards}
+@keyframes flash{from{opacity:1}to{opacity:0}}
+
+/* Bottom Nav */
+.nav{
+  position:fixed;inset:auto 0 0;height:62px;z-index:20;
+  display:flex;justify-content:center;align-items:center;gap:18px;
+  background:linear-gradient(transparent,var(--w) 45%);
+}
+.nav button{
+  width:42px;height:42px;border-radius:50%;border:2px solid var(--p);
+  background:#fff;color:var(--ink);font-size:1.5rem;cursor:pointer;
+  display:grid;place-items:center;line-height:1;
+}
+.dots{display:flex;gap:10px;align-items:center}
+.dots i{width:11px;height:11px;border-radius:50% 0;background:var(--y2);border:2px solid var(--y);transform:rotate(45deg);transition:.3s}
+.dots i.on{background:var(--p);border-color:var(--p);transform:rotate(45deg) scale(1.3)}
+
+.toast{position:fixed;left:50%;bottom:80px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:10px 20px;border-radius:99px;opacity:0;transition:.3s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.confetti{position:fixed;top:-20px;width:12px;height:12px;border-radius:3px;z-index:40;pointer-events:none;animation:fall 2.4s ease-in forwards}
+@keyframes fall{to{transform:translate(var(--dx),105vh) rotate(720deg)}}
+
+@media(max-width:560px){
+  .teach{flex-direction:column;gap:14px}
+  .bubble .tail{display:none}
+  .bubble.sm .tail.sm{display:block}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
