@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khanom Kong – Let's Cook Together</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <span class="brand" data-i="brand"></span>
+  <div class="tools">
+    <button id="snd" class="pill" aria-label="Sound">♪ On</button>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="on">EN</button><button data-lang="th">ไทย</button>
+    </div>
+  </div>
+</header>
+
+<main id="book">
+  <!-- PAGE 1 : HERO -->
+  <section class="page on" id="p1">
+    <div class="hero">
+      <div class="kong-big" id="heroKong"></div>
+      <p class="kicker" data-i="kicker"></p>
+      <h1>Khanom <span>Kong</span></h1>
+      <p class="lead" data-i="lead"></p>
+      <button class="btn go" id="startBtn" data-i="start"></button>
+    </div>
+  </section>
+
+  <!-- PAGE 2 : INGREDIENTS -->
+  <section class="page" id="p2">
+    <div class="page-head">
+      <h2 data-i="ingTitle"></h2>
+      <p class="sub" data-i="ingSub"></p>
+    </div>
+    <div class="ings" id="ings"></div>
+  </section>
+
+  <!-- PAGE 3 : CHEF INTRO -->
+  <section class="page" id="p3">
+    <div class="teach">
+      <div class="chef" id="chefIntro"></div>
+      <div class="bubble">
+        <svg class="tail" viewBox="0 0 24 32" aria-hidden="true">
+          <path d="M24 2 Q8 12 2 16 Q8 20 24 30 Z" fill="#fff" stroke="#F59BBB" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="21" y="0" width="4" height="32" fill="#fff"/>
+        </svg>
+        <h2 data-i="cookTitle"></h2>
+        <p class="bubble-desc" data-i="cookText"></p>
+        <button class="btn go" id="cookStartBtn" data-i="letsStart"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4 : 2D GAME -->
+  <section class="page" id="p4">
+    <div class="gamehead">
+      <span id="stepName"></span>
+      <div class="prog"><i id="progBar"></i></div>
+    </div>
+    <div class="gamewrap">
+      <div class="chef small" id="chefGame"></div>
+      <div class="bubble sm">
+        <svg class="tail sm" viewBox="0 0 20 26" aria-hidden="true">
+          <path d="M20 2 Q6 10 2 13 Q6 16 20 24 Z" fill="#fff" stroke="#F59BBB" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="17" y="0" width="4" height="26" fill="#fff"/>
+        </svg>
+        <span id="say"></span>
+      </div>
+    </div>
+    <div class="stage" id="stage"></div>
+    <div class="tray" id="tray"></div>
+  </section>
+
+  <!-- PAGE 5 : END & CAMERA -->
+  <section class="page" id="p5">
+    <div class="page-head">
+      <h2 data-i="endTitle"></h2>
+      <p class="sub" data-i="endSub"></p>
+    </div>
+    <div class="endwrap">
+      <div class="polaroid" id="finalKong"></div>
+      <div class="actions">
+        <button class="btn alt" id="camBtn">📷 <span data-i="photo"></span></button>
+        <input type="file" id="photoIn" accept="image/*" capture="environment" hidden>
+        <button class="btn" id="shareBtn" data-i="share"></button>
+        <button class="btn ghost" id="again" data-i="again"></button>
+      </div>
+      <canvas id="story" width="1080" height="1920"></canvas>
+    </div>
+  </section>
+</main>
+
+<!-- CAMERA MODAL -->
+<div class="cam-modal" id="camModal" aria-hidden="true">
+  <div class="cam-box">
+    <div class="cam-top">
+      <span class="cam-badge">● REC</span>
+      <span data-i="camHint"></span>
+      <button class="cam-close" id="camClose" aria-label="Close">✕</button>
+    </div>
+    <div class="cam-view">
+      <video id="camVideo" autoplay playsinline></video>
+      <div class="cam-grid"><i></i><i></i><i></i><i></i></div>
+      <div class="cam-focus"></div>
+    </div>
+    <div class="cam-controls">
+      <button class="cam-flip" id="camFlip" title="Switch Camera">🔄</button>
+      <button class="shutter" id="shutterBtn" aria-label="Take Photo"></button>
+      <label class="cam-gallery" title="Upload from gallery">🖼️
+        <input type="file" id="galleryIn" accept="image/*" hidden>
+      </label>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button id="back" aria-label="Back">‹</button>
+  <div class="dots" id="dots"></div>
+  <button id="next" aria-label="Next">›</button>
+</nav>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
